@@ -16,11 +16,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         abstractcompany.cpp \
-        cocacola.cpp \
-        lipton.cpp \
+        bigBusiness.cpp \
         main.cpp \
-        pepsi.cpp \
-        singleton.cpp
+        mediumBusiness.cpp \
+        menu.cpp \
+        register.cpp \
+        smallBusiness.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -29,7 +30,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     abstractcompany.h \
-    cocacola.h \
-    lipton.h \
-    pepsi.h \
-    singleton.h
+    bigBusiness.h \
+    mediumBusiness.h \
+    register.h \
+    smallBusiness.h
