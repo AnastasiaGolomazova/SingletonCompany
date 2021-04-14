@@ -8,6 +8,7 @@ class Register
     QList<AbstractCompany*> companies;
 protected:
     Register();
+    static Register* instance;
 
 public:
   QList<AbstractCompany*> getCompanies();
@@ -16,8 +17,10 @@ public:
   bool delCompany(QString companyName);
   AbstractCompany* getByIndex(int index);
   bool doesCompanyExist(QString company);
-  static Register& GetInstance(){
-      static Register instance;
+  static Register* GetInstance(){
+      if(!instance){
+          instance = new Register;
+      }
       return instance;
   };
   int getSize ();

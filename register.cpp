@@ -2,8 +2,11 @@
 
 enum Exception {out_of_the_array};
 
-Register::Register(){
 
+Register* Register::instance = nullptr;
+
+Register::Register(){
+    cout << "New register created" << endl;
 }
 QList<AbstractCompany*> Register:: getCompanies(){
     return companies;
@@ -17,18 +20,24 @@ bool Register::addCompany(AbstractCompany* company){
 }
 
 bool  Register::delCompany(AbstractCompany* company){
-    if(doesCompanyExist(company->getName())){
-        for(int i=0; i < companies.count()-1; i++){
-            if(this->companies[i]->getName() == company->getName()){
-                this->companies.removeAt(i);
-                return true;
-                }
-            }
-        }
-    return false;
-
+    if(!doesCompanyExist(company->getName())){
+        return false;
     }
+
+    for(int i=0; i < companies.count()-1; i++){
+        if(this->companies[i]->getName() == company->getName()){
+            this->companies.removeAt(i);
+            return true;
+        }
+    }
+    return false;
+}
+
 bool  Register::delCompany(QString companyName){
+    if(!doesCompanyExist(companyName)){
+        return false;
+    }
+
     for(int i=0; i < companies.count()-1; i++){
         if(companies[i]->getName() == companyName){
             this->companies.removeAt(i);
