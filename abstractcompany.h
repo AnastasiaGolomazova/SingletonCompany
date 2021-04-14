@@ -29,6 +29,8 @@ public:
         this->employees =employees;
     };
 
+    virtual ~AbstractCompany(){}
+
     QString getName();
 
     void setName(QString name);

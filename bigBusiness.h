@@ -7,6 +7,8 @@ class BigBusiness : public AbstractCompany
 public:
     BigBusiness(QString name,QList<QString> owners,double profit,double area, int employees);
 
+    ~BigBusiness(){}
+
     TypeOfCompany getTypeOfCompany();
 
     double getTaxMounth();

@@ -9,6 +9,8 @@ public:
 
     MediumBusiness(QString name,QList<QString> owners,double profit,double area, int employees);
 
+    ~MediumBusiness(){}
+
     TypeOfCompany getTypeOfCompany();
 
     double getTaxMounth();

@@ -24,8 +24,13 @@ public:
       return instance;
   };
 
-  static void freeMemory(){
+  void freeMemory(){
+      for(int i = 0; i < companies.count(); i++){
+          delete companies[i];
+      }
+
       if(instance){
+          cout << "Singletone memory is free" << endl;
           delete instance;
       }
   }
