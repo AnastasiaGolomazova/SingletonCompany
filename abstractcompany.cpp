@@ -39,6 +39,7 @@
     }
 
     int AbstractCompany::setEmployees(int employees){
-      this->employees = employees;
+      return (this->employees = employees);
+
     }
 

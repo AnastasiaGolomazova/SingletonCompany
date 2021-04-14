@@ -1,5 +1,10 @@
 #include "register.h"
 
+enum Exception {out_of_the_array};
+
+Register::Register(){
+
+}
 QList<AbstractCompany*> Register:: getCompanies(){
     return companies;
 }
@@ -9,12 +14,8 @@ bool Register::addCompany(AbstractCompany* company){
         return true;
     }
     return false;
-
-    //& this->companies[i]->getArea() == company->getArea() &
-    //this->companies[i]->getOwners() == company->getOwners()&
-    //this->companies[i]->getProfit() == company->getProfit()&
-    //this->companies[i]->getEmployees() == company->getEmployees()
 }
+
 bool  Register::delCompany(AbstractCompany* company){
     if(doesCompanyExist(company->getName())){
         for(int i=0; i < companies.count()-1; i++){
@@ -27,8 +28,20 @@ bool  Register::delCompany(AbstractCompany* company){
     return false;
 
     }
+bool  Register::delCompany(QString companyName){
+    for(int i=0; i < companies.count()-1; i++){
+        if(companies[i]->getName() == companyName){
+            this->companies.removeAt(i);
+            return true;
+        }
+    }
+    return false;
+}
 
 AbstractCompany*  Register::getByIndex(int index){
+    if(index>=getSize() || index < 0){
+        throw new Exception(out_of_the_array);
+    }
     return companies[index];
 }
 AbstractCompany*  Register::getByName(QString companyName){
@@ -37,7 +50,9 @@ AbstractCompany*  Register::getByName(QString companyName){
             return companies[i];
             }
         }
+    return nullptr;
 }
+
 bool Register::doesCompanyExist(QString companyName){
     for(int i=0; i < companies.count()-1; i++){
         if(companies[i]->getName() == companyName){

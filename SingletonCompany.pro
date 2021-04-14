@@ -19,7 +19,6 @@ SOURCES += \
         bigBusiness.cpp \
         main.cpp \
         mediumBusiness.cpp \
-        menu.cpp \
         register.cpp \
         smallBusiness.cpp
 
