@@ -23,6 +23,12 @@ public:
       }
       return instance;
   };
+
+  static void freeMemory(){
+      if(instance){
+          delete instance;
+      }
+  }
   int getSize ();
   AbstractCompany* getByName(QString companyName);
 };

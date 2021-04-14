@@ -118,6 +118,6 @@ int main(int argc, char *argv[])
     printAverageByType();
 
 
-
+    Register::freeMemory();
    return a.exec();
    }
