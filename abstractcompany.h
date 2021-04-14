@@ -1,13 +1,15 @@
 #ifndef ABSTRACT_COMPANY_H
 #define ABSTRACT_COMPANY_H
-
-
-
+#include <iostream>
 #include <QString>
 #include <QList>
 
+using namespace std;
 
-enum TypeOfCompany{Small_Business, Big_Business, Medium_Business};
+enum TypeOfCompany{
+    Small_Business, Medium_Business, Big_Business
+};
+
 
 class AbstractCompany
 {
@@ -49,6 +51,10 @@ public:
 
     virtual TypeOfCompany getTypeOfCompany() = 0;
     virtual double getTaxMounth() = 0;
+
+    friend ostream& operator<< (ostream &out,  AbstractCompany* company);
+
+    static string getCompanyTypeString(TypeOfCompany type);
 };
 
 
