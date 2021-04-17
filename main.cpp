@@ -72,52 +72,57 @@ void printAverageByType(){
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-    QString name = "FFFF";
-    QString name1 = "FFFM";
-    QString name2 = "FVVVF";
-    QString name3 = "LFF";
-    QList<QString> owners =  {"NNNNNNN", "MMMMMM"};
-    QList<QString> owners1 =  {"NNfg", "MMfgd"};
-    QList<QString> owners2 =  {"NNfg", "MMMMMM"};
+    QString CocaCola = "CocaCola";
+    QString Lipton = "Lipton";
+    QString Mercury = "Mercury";
+    QString Olympus = "Olympus";
+    QList<QString> owners =  {"Henkel Rus", "Gee Johnson"};
+    QList<QString> owners1 =  {"Procter Gamble", "Gee Johnson"};
+    QList<QString> owners2 =  {"Procter Gamble", "Philip Morris"};
 
 
 
     Register* Tester = Register::GetInstance();
-    Tester->addCompany(new MediumBusiness(name, owners, 4444,55, 653));
+    MediumBusiness* odj = new MediumBusiness(Lipton, owners, 44,55, 11);
+    Tester->addCompany(odj);
     cout<< "Size (add 1 company)" << endl;
     cout<< Tester->getSize()<< endl;
-    SmallBusiness* mmm = new SmallBusiness(name1, owners, 44,55, 653);
-    SmallBusiness* mn = new SmallBusiness(name2, owners1, 44,55, 653);
-    BigBusiness* mt = new BigBusiness(name3, owners2, 44,55, 653);
-    Tester->addCompany(mmm);
-    Tester->addCompany(mn);
-    Tester->addCompany(mt);
+
+    SmallBusiness* odj1 = new SmallBusiness(Lipton, owners, 5,7, 5);
+    SmallBusiness* odj2 = new SmallBusiness(Mercury, owners1, 4,5, 5);
+    BigBusiness* odj3 = new BigBusiness(Olympus, owners2, 121,10000, 100);
+    Tester->addCompany(odj1);
+    Tester->addCompany(odj2);
+    Tester->addCompany(odj3);
     cout<< "Size (add 3 company)"<< endl;
     cout<< Tester->getSize()<< endl;
+
     cout<< "_______________________"<< endl;
     cout<< "delete 1 company"<< endl;
-    //Tester->delCompany(name1);
-    if(!Tester->doesCompanyExist(name1)){
-        cout<<"name1 doesn't exist"<<endl;
+    if(!Tester->doesCompanyExist(CocaCola)){
+        cout<<"CocaCola doesn't exist"<<endl;
     }else{
-        cout<<"name1 exists"<<endl;
+        cout<<"CocaCola exists"<<endl;
     }
+
     cout<< "_______________________"<< endl;
     cout<< "delete 1 company"<< endl;
     //Tester->delCompany(mn);
-    if(!Tester->doesCompanyExist(name2)){
-        cout<<"name1 doesn't exist"<<endl;
+    if(!Tester->doesCompanyExist(Mercury)){
+        cout<<"Mercury doesn't exist"<<endl;
     }else{
-        cout<<"name1 exists"<<endl;
+        cout<<"Mercury exists"<<endl;
     }
+
+    cout<< "_______________________"<< endl;
     cout<<"Size (del 2 company)"<<endl;
     cout<< Tester->getSize()<< endl;
 
     printCompanyByType(Small_Business);
-    printCompanyByOwner("MMfgd");
+    printCompanyByOwner("Gee Johnson");
     printAverageByType();
 
 
-    Tester->freeMemory();
+   Tester->freeMemory();
    return a.exec();
    }
